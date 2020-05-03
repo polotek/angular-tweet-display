@@ -1,16 +1,16 @@
-<div class="bbpBox" id="t{id}">
+<div class="bbpBox" [id]="tweet.id_str">
     <blockquote>
-        <span class="twContent">{{tweetText}}</span>
+        <span class="twContent">{{tweet.full_text}}</span>
         <span class="twMeta"><br />
             <span class="twDecoration">&mdash;</span>
-            <span class="twRealName">{{tweet.author_name}}</span>
+            <span class="twRealName">{{tweet.user.name}}</span>
             <span class="twDecoration"> (</span>
-            <a href="http://twitter.com/{screenName}">
-                <span class="twScreenName">@{{screenName}}</span>
+            <a [href]="profileUrl(tweet.user.screen_name)">
+                <span class="twScreenName">@{{tweet.user.screen_name}}</span>
             </a>
             <span class="twDecoration">) </span>
-            <a href="{tweetURL}">
-                <span class="twTimeStamp">{{timeStamp}}</span>
+            <a [href]="statusUrl(tweet)">
+                <span class="twTimeStamp">{{tweet.created_at}}</span>
             </a>
             <span class="twDecoration"></span>
         </span>
