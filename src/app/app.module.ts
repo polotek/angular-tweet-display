@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { TweetViewComponent } from './tweet-view/tweet-view.component'
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    TweetViewComponent,
   ],
   bootstrap: [ AppComponent ]
 })

@@ -20,20 +20,18 @@ declare global {
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  embeds$: Observable<SafeHtml[]>
+  tweets$: Observable<SafeHtml[]>
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    this.embeds$ = this.http
-      .post<SafeHtml[]>("https://polotek.builtwithdark.com/twitter/oembed", {
+    this.tweets$ = this.http
+      .post<object[]>("https://polotek.builtwithdark.com/twitter/oembed", {
         payload: ["https://twitter.com/polotek/status/1236417848177618946"]
       })
       .pipe(
-        map((embeds: [string, { html: string }][]) => {
-          return embeds.map(([url, embed]) =>
-            this.sanitizer.bypassSecurityTrustHtml(embed.html)
-          )
+        map((embeds: [string, {}][]) => {
+          return embeds.map(([url, embed]) => embed)
         })
       )
   }

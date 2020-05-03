@@ -1,3 +1,3 @@
 <div class="container">
-  <div *ngFor='let embedHtml of embeds$ | async' [innerHTML]="embedHtml"></div>
+  <tweet-view *ngFor='let tweet of tweets$ | async' [tweet]="tweet"></tweet-view>
 </div>
